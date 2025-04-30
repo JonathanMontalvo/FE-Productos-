@@ -1,0 +1,83 @@
+<div class="color-bar"></div>
+<nav class="navbar flex align-items-center justify-content-between p-2">
+  <div class="flex align-items-center">
+    <a href="https://www.bosch.com/" class="navbar-brand">
+      <img
+        class="logo"
+        src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoiYm9zY2hcL2FjY291bnRzXC9hNVwvNDAwMDA5OFwvcHJvamVjdHNcLzE2NlwvYXNzZXRzXC85MVwvMTI1NjM2XC8yZjhmN2JjOGFlOTJlM2ExZDljZmVkODJkMjBkNWJmYy0xNjA1Mjk4NTQyLnN2ZyJ9:bosch:2ppXkZvyOBy2OzJEFMs0YN4tocAEG1aL-zRZ30Qpxuw?width={width}&amp;rect=0,0,433,97&amp;reference_width=433"
+        alt="Bosch"
+      />
+    </a>
+  </div>
+
+  <div class="flex flex-row flex-wrap items-center gap-1 sm:gap-3">
+    <button
+      type="button"
+      class="transparent-button px-2 sm:px-4 text-sm sm:text-base"
+      (click)="empleadosPanel.toggle($event)"
+    >
+      Empleados <i class="pi pi-angle-down ml-1"></i>
+    </button>
+    <p-overlayPanel #empleadosPanel>
+      <ul class="list-none p-0 m-0">
+        <li>
+          <span class="menu-action" (click)="onAgregar('empleado')"
+            >Agregar empleados</span
+          >
+        </li>
+        <hr class="menu-divider" />
+        <li>
+          <span class="menu-action" (click)="onMostrar('empleado')"
+            >Mostrar empleados</span
+          >
+        </li>
+      </ul>
+    </p-overlayPanel>
+
+    <button
+      type="button"
+      class="transparent-button px-2 sm:px-4 text-sm sm:text-base"
+      (click)="productosPanel.toggle($event)"
+    >
+      Productos <i class="pi pi-angle-down ml-1"></i>
+    </button>
+    <p-overlayPanel #productosPanel>
+      <ul class="list-none p-0 m-0">
+        <li>
+          <span class="menu-action" (click)="onAgregar('productos')"
+            >Agregar productos</span
+          >
+        </li>
+        <hr class="menu-divider" />
+        <li>
+          <span class="menu-action" (click)="onMostrar('productos')"
+            >Mostrar productos</span
+          >
+        </li>
+      </ul>
+    </p-overlayPanel>
+
+    <button
+      type="button"
+      class="transparent-button px-2 sm:px-4 text-sm sm:text-base mr-4"
+      (click)="ordenesPanel.toggle($event)"
+    >
+      Órdenes <i class="pi pi-angle-down ml-1"></i>
+    </button>
+    <p-overlayPanel #ordenesPanel>
+      <ul class="list-none p-0 m-0">
+        <li>
+          <span class="menu-action" (click)="onAgregar('ordenes')"
+            >Agregar órdenes</span
+          >
+        </li>
+        <hr class="menu-divider" />
+        <li>
+          <span class="menu-action" (click)="onMostrar('ordenes')"
+            >Mostrar órdenes</span
+          >
+        </li>
+      </ul>
+    </p-overlayPanel>
+  </div>
+</nav>

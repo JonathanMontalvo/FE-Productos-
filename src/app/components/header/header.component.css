@@ -1,0 +1,68 @@
+.color-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background-image: url("/img/Bosch-Supergraphic_RGB.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap; /* Para que si todo junto no cabe, baje */
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  margin: 2rem 1rem 2rem 1rem;
+  width: 100%;
+}
+
+.logo {
+  width: 160px;
+  height: auto;
+}
+
+.transparent-button {
+  background: #e0e2e5;
+  border: none;
+  color: black;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.transparent-button:hover {
+  background-color: white;
+}
+
+.menu-action {
+  display: block;
+  width: 100%;
+  padding: 0.6rem;
+  font-weight: 500;
+  color: #212529;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.menu-action:hover {
+  background-color: #e9ecef;
+  border-radius: 0.375rem;
+}
+
+.menu-divider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid #d1d5db;
+}

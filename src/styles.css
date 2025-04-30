@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+/*
+ * npm install primeng@17.18.7 --legacy-peer-deps
+ * npm install primeicons primeflex --legacy-peer-deps
+ * npm install @angular/animations --legacy-peer-deps
+ * Ahora al hacer npm install debe ser con legacy o force
+*/
+@import "../node_modules/primeng/resources/themes/md-light-indigo/theme.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "primeicons/primeicons.css";
+@import "primeflex/primeflex.css";

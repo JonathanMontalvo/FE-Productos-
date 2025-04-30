@@ -1,0 +1,15 @@
+.table-container {
+  margin: 0 1rem;
+  align-items: center;
+  text-align: center;
+  background-color: #e0e2e5;
+}
+
+.title {
+  padding-top: 2rem;
+  margin: 0;
+}
+
+.card {
+  margin: 2rem 0;
+}
