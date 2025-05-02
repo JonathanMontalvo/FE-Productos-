@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-
-interface Column {
-  field: string;
-  header: string;
-}
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ColumnTable } from '../../interfaces/column-table';
+import { ActivatedRoute } from '@angular/router';
+import { OrderService } from '../../services/order/order.service';
+import { Employee } from '../../interfaces/employee';
+import { GetOrder } from '../../interfaces/get-order';
+import { Category } from '../../interfaces/category';
 
 interface Product {
   id: number;
@@ -15,20 +16,44 @@ interface Product {
 }
 
 @Component({
-  selector: 'app-table-products',
+  selector: 'app-table',
   standalone: false,
-  templateUrl: './table-products.component.html',
-  styleUrl: './table-products.component.css',
+  templateUrl: './table.component.html',
+  styleUrl: './table.component.css',
 })
-export class TableProductsComponent implements OnInit {
-  contenido: string = 'Productos';
-  products!: Product[];
-  cols!: Column[];
+export class TableComponent implements OnInit, AfterViewInit {
+  component: string;
+  data!: Category[] | Product[] | Employee[] | GetOrder[];
+  cols!: ColumnTable[];
 
-  constructor() {}
+  constructor(
+    private _aRoute: ActivatedRoute,
+    private _orderService: OrderService
+  ) {
+    this.component = this._aRoute.snapshot.url[0].path.substring(3);
+  }
 
-  ngOnInit() {
-    this.products = [
+  getOrders() {
+    this._orderService.getOrders().subscribe(
+      (data) => {
+        this.data = data;
+      },
+      (error) => {
+        alert(error);
+      }
+    );
+  }
+
+  ngOnInit(): void {
+    this.cols = [
+      { field: 'id', header: 'Id' },
+      { field: 'employee', header: 'Employee' },
+      { field: 'total', header: 'Total' },
+      { field: 'opciones', header: 'Opciones' },
+    ];
+    this.getOrders();
+
+    /*this.products = [
       {
         id: 1,
         code: 'f230fh0g3',
@@ -101,13 +126,8 @@ export class TableProductsComponent implements OnInit {
         category: 'Accessories',
         quantity: 25,
       },
-    ];
-
-    this.cols = [
-      { field: 'code', header: 'Code' },
-      { field: 'name', header: 'Name' },
-      { field: 'category', header: 'Category' },
-      { field: 'quantity', header: 'Quantity' },
-    ];
+    ];*/
   }
+
+  ngAfterViewInit(): void {}
 }

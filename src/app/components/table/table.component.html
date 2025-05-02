@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="table-container">
+  <h1 class="title">Listado de {{ component }}</h1>
+  <div class="card">
+    <p-table
+      [columns]="cols"
+      [value]="data"
+      [paginator]="true"
+      [rows]="3"
+      showGridlines
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rowsPerPageOptions]="[3, 6, 9]"
+    >
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns">
+            {{ col.header }}
+          </th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+          <td *ngFor="let col of columns">
+            <ng-container [ngSwitch]="col.field">
+              <ng-container *ngSwitchCase="'employee'">
+                {{ rowData[col.field]?.id }} | {{ rowData[col.field]?.name }}
+                {{ rowData[col.field]?.lastname }}
+              </ng-container>
+
+              <ng-container *ngSwitchCase="'opciones'">
+                <button
+                  pButton
+                  type="button"
+                  icon="pi pi-search"
+                  class="p-button-rounded p-button-info p-button-sm mr-2"
+                  [routerLink]="['/verProductsOrders', rowData['id']]"
+                ></button>
+                <!--agregar (click)="onDelete(rowData['id'])" -->
+                <button
+                  pButton
+                  type="button"
+                  icon="pi pi-trash"
+                  class="p-button-rounded p-button-danger p-button-sm"
+                ></button>
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                {{ rowData[col.field] }}
+              </ng-container>
+            </ng-container>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
