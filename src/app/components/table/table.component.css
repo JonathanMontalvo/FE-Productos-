@@ -1,15 +1,69 @@
-.table-container {
-  margin: 0 1rem;
+.container {
+  padding: 0 1rem;
   align-items: center;
   text-align: center;
-  background-color: #e0e2e5;
-}
-
-.title {
-  padding-top: 2rem;
   margin: 0;
 }
 
-.card {
-  margin: 2rem 0;
+.title {
+  padding: 1rem;
+  margin: 0;
+  background-color: #e0e2e5;
+}
+
+.table-container {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button-group {
+  width: auto;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+::ng-deep .view-button.p-button {
+  background-color: rgb(49, 36, 219) !important;
+  color: white !important;
+  transition: background-color 0.3s ease-in-out !important;
+}
+
+::ng-deep .view-button.p-button:hover {
+  background-color: rgb(51, 101, 196) !important;
+  color: white !important;
+}
+
+::ng-deep .edit-button.p-button {
+  background-color: rgb(17, 223, 27) !important;
+  color: white !important;
+  transition: background-color 0.3s ease-in-out !important;
+}
+
+::ng-deep .edit-button.p-button:hover {
+  background-color: rgb(40, 197, 47) !important;
+  color: white !important;
+}
+
+::ng-deep .delete-button.p-button {
+  background-color: rgb(255, 0, 0) !important;
+  color: white !important;
+  transition: background-color 0.3s ease-in-out;
+}
+
+::ng-deep .delete-button.p-button:hover {
+  background-color: rgb(231, 72, 72) !important;
+  color: white !important;
+}
+
+::ng-deep .tiny-button.p-button {
+  height: 2rem !important;
+  width: 2rem !important;
+}
+
+.total {
+  text-align: left;
 }

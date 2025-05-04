@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -8,13 +9,45 @@ import { MenuItem } from 'primeng/api';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  constructor() {}
+  constructor(private _router: Router) {}
 
   onAgregar(type: string) {
-    console.log(`Agregar ${type}`);
+    //console.log(`Agregar ${type}`);
+    switch (type) {
+      case 'orden':
+        this._router.navigate(['/agregarOrden']);
+        break;
+      case 'categoria':
+        this._router.navigate(['/agregarCategoria']);
+        break;
+      case 'producto':
+        this._router.navigate(['/agregarPoducto']);
+        break;
+      case 'empleado':
+        this._router.navigate(['/agregarEmpleado']);
+        break;
+      default:
+        break;
+    }
   }
 
   onMostrar(type: string) {
-    console.log(`Mostrar ${type}`);
+    //console.log(`Mostrar ${type}`);
+    switch (type) {
+      case 'productos':
+        this._router.navigate(['/verProductos']);
+        break;
+      case 'categorias':
+        this._router.navigate(['/verCategorias']);
+        break;
+      case 'ordenes':
+        this._router.navigate(['/verOrdenes']);
+        break;
+      case 'empleados':
+        this._router.navigate(['/verEmpleados']);
+        break;
+      default:
+        break;
+    }
   }
 }

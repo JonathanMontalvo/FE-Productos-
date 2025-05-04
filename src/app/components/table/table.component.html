@@ -1,15 +1,15 @@
 <app-header></app-header>
-<div class="table-container">
-  <h1 class="title">Listado de {{ component }}</h1>
-  <div class="card">
+<div class="container">
+  <h1 class="title">Listado de {{ formattedComponent }}</h1>
+  <div class="table-container">
     <p-table
       [columns]="cols"
       [value]="data"
       [paginator]="true"
-      [rows]="3"
+      [rows]="5"
       showGridlines
       [tableStyle]="{ 'min-width': '50rem' }"
-      [rowsPerPageOptions]="[3, 6, 9]"
+      [rowsPerPageOptions]="[5, 10]"
     >
       <ng-template pTemplate="header" let-columns>
         <tr>
@@ -23,31 +23,72 @@
         <tr>
           <td *ngFor="let col of columns">
             <ng-container [ngSwitch]="col.field">
+              <ng-container *ngSwitchCase="'op.product'">
+                {{ rowData["product"]?.name }}
+              </ng-container>
+              <ng-container *ngSwitchCase="'op.price'">
+                {{ rowData["product"]?.price }}
+              </ng-container>
+              <ng-container *ngSwitchCase="'op.total'">
+                {{
+                  rowData["quantity"] * rowData["product"]?.price
+                    | currency : "USD" : "symbol" : "1.2-2" : "en-US"
+                }}
+              </ng-container>
+              <ng-container *ngSwitchCase="'total'">
+                {{
+                  rowData["total"]
+                    | currency : "USD" : "symbol" : "1.2-2" : "en-US"
+                }}
+              </ng-container>
+              <ng-container *ngSwitchCase="'category'">
+                {{ rowData["category"]?.name }}
+              </ng-container>
               <ng-container *ngSwitchCase="'employee'">
                 {{ rowData[col.field]?.id }} | {{ rowData[col.field]?.name }}
                 {{ rowData[col.field]?.lastname }}
               </ng-container>
-
               <ng-container *ngSwitchCase="'opciones'">
-                <button
-                  pButton
-                  type="button"
-                  icon="pi pi-search"
-                  class="p-button-rounded p-button-info p-button-sm mr-2"
-                  [routerLink]="['/verProductsOrders', rowData['id']]"
-                ></button>
-                <!--agregar (click)="onDelete(rowData['id'])" -->
-                <button
-                  pButton
-                  type="button"
-                  icon="pi pi-trash"
-                  class="p-button-rounded p-button-danger p-button-sm"
-                ></button>
+                <div class="button-group">
+                  <p-button
+                    *ngIf="component === 'Ordenes'"
+                    icon="pi pi-search"
+                    [rounded]="true"
+                    size="small"
+                    styleClass="view-button tiny-button tiny-icon"
+                    [routerLink]="['/verOrdenesProductos', rowData['id']]"
+                  ></p-button>
+                  <p-button
+                    icon="pi pi-pencil"
+                    [rounded]="true"
+                    size="small"
+                    styleClass="edit-button tiny-button tiny-icon"
+                    [routerLink]="['/verProductsOrders', rowData['id']]"
+                  ></p-button>
+                  <p-button
+                    icon="pi pi-trash"
+                    [rounded]="true"
+                    size="small"
+                    styleClass="delete-button tiny-button tiny-icon"
+                    (click)="eliminarObjeto(rowData['id'])"
+                  ></p-button>
+                </div>
               </ng-container>
               <ng-container *ngSwitchDefault>
                 {{ rowData[col.field] }}
               </ng-container>
             </ng-container>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="footer">
+        <tr *ngIf="component === 'OrdenesProductos'">
+          <td colspan="4"></td>
+          <td class="total">
+            Total:<span>{{
+              totalGeneral | currency : "USD" : "symbol" : "1.2-2" : "en-US"
+            }}</span>
           </td>
         </tr>
       </ng-template>

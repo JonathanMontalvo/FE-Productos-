@@ -11,17 +11,17 @@
 }
 
 .navbar {
-  position: relative;
+  margin: 2rem 1rem 1rem 0;
   display: flex;
   flex-wrap: wrap; /* Para que si todo junto no cabe, baje */
   align-items: center;
   justify-content: space-between;
   background-color: white;
-  margin: 2rem 1rem 2rem 1rem;
   width: 100%;
 }
 
 .logo {
+  margin-left: 1rem;
   width: 160px;
   height: auto;
 }

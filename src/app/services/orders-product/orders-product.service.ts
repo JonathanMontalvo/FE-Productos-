@@ -19,8 +19,8 @@ export class OrdersProductService {
     );
   }
 
-  getOrdersProductsByOrderId(orderId: number): Observable<GetOrdersProduct> {
-    return this.http.get<GetOrdersProduct>(
+  getOrdersProductsByOrderId(orderId: number): Observable<GetOrdersProduct[]> {
+    return this.http.get<GetOrdersProduct[]>(
       `${this._myAppUrl}${this._myApiUrl}${orderId}`
     );
   }

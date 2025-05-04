@@ -1,0 +1,98 @@
+.container {
+  padding: 0 1rem;
+  margin: 0;
+}
+
+.title {
+  padding: 1rem;
+  margin: 0;
+  background-color: #e0e2e5;
+  text-align: center;
+}
+
+.create-order-container {
+  margin-top: 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  /*align-items: center;*/
+}
+
+.form-header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.table-wrapper {
+  width: 100%;
+  padding: 0 3rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+::ng-deep .total-button button {
+  background-color: purple !important;
+  color: white !important;
+  transition: background-color 0.3s ease-in-out;
+}
+
+::ng-deep .total-button button:hover {
+  background-color: #b358b3 !important;
+}
+
+::ng-deep .delete-button.p-button {
+  background-color: rgb(255, 0, 0) !important;
+  color: white !important;
+  transition: background-color 0.3s ease-in-out;
+}
+
+::ng-deep .delete-button.p-button:hover {
+  background-color: rgb(231, 72, 72) !important;
+  color: white !important;
+}
+
+.actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .add-button.p-button {
+  background-color: rgb(17, 223, 27) !important;
+  color: white !important;
+  transition: background-color 0.3s ease-in-out !important;
+}
+
+::ng-deep .add-button.p-button:hover {
+  background-color: rgb(40, 197, 47) !important;
+  color: white !important;
+}
+
+::ng-deep .save-button.p-button {
+  background-color: rgb(49, 36, 219) !important;
+  color: white !important;
+  transition: background-color 0.3s ease-in-out !important;
+}
+
+::ng-deep .save-button.p-button:hover {
+  background-color: rgb(51, 101, 196) !important;
+  color: white !important;
+}
+
+.total {
+  text-align: right;
+}

@@ -27,7 +27,7 @@
         </li>
         <hr class="menu-divider" />
         <li>
-          <span class="menu-action" (click)="onMostrar('empleado')"
+          <span class="menu-action" (click)="onMostrar('empleados')"
             >Mostrar empleados</span
           >
         </li>
@@ -44,7 +44,7 @@
     <p-overlayPanel #productosPanel>
       <ul class="list-none p-0 m-0">
         <li>
-          <span class="menu-action" (click)="onAgregar('productos')"
+          <span class="menu-action" (click)="onAgregar('producto')"
             >Agregar productos</span
           >
         </li>
@@ -59,15 +59,39 @@
 
     <button
       type="button"
-      class="transparent-button px-2 sm:px-4 text-sm sm:text-base mr-4"
+      class="transparent-button px-2 sm:px-4 text-sm sm:text-base mr-2"
+      (click)="categoriasPanel.toggle($event)"
+    >
+      Categorias <i class="pi pi-angle-down ml-1"></i>
+    </button>
+    <p-overlayPanel #categoriasPanel>
+      <ul class="list-none p-0 m-0">
+        <li>
+          <span class="menu-action" (click)="onAgregar('categoria')"
+            >Agregar categorias</span
+          >
+        </li>
+        <hr class="menu-divider" />
+        <li>
+          <span class="menu-action" (click)="onMostrar('categorias')"
+            >Mostrar categorias</span
+          >
+        </li>
+      </ul>
+    </p-overlayPanel>
+
+    <button
+      type="button"
+      class="transparent-button px-2 sm:px-4 text-sm sm:text-base mr-2"
       (click)="ordenesPanel.toggle($event)"
     >
-      Órdenes <i class="pi pi-angle-down ml-1"></i>
+      Órdenes
+      <i class="pi pi-angle-down ml-1"></i>
     </button>
     <p-overlayPanel #ordenesPanel>
       <ul class="list-none p-0 m-0">
         <li>
-          <span class="menu-action" (click)="onAgregar('ordenes')"
+          <span class="menu-action" (click)="onAgregar('orden')"
             >Agregar órdenes</span
           >
         </li>

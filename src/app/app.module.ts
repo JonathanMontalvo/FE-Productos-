@@ -7,9 +7,10 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { TableComponent } from './components/table/table.component';
+import { CreateOrderComponent } from './components/create-order/create-order.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, TableComponent],
+  declarations: [AppComponent, HeaderComponent, TableComponent, CreateOrderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

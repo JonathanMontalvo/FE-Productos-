@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { PostOrder } from '../../interfaces/post-order';
 import { GetOrder } from '../../interfaces/get-order';
+import { EmployeesProducts } from '../../interfaces/employees-products';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,12 @@ export class OrderService {
 
   getOrder(id: number): Observable<GetOrder> {
     return this.http.get<GetOrder>(`${this._myAppUrl}${this._myApiUrl}${id}`);
+  }
+
+  getEmployeesProducts(): Observable<EmployeesProducts> {
+    return this.http.get<EmployeesProducts>(
+      `${this._myAppUrl}${this._myApiUrl}Employees-Products`
+    );
   }
 
   addOrder(order: PostOrder): Observable<GetOrder> {
