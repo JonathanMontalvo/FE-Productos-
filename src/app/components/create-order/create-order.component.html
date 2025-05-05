@@ -1,114 +1,122 @@
 <app-header></app-header>
 <div class="container">
-  <h1 class="title">Crear orden</h1>
-  <div class="create-order-container" [formGroup]="formGroup">
-    <div class="form-header">
-      <p-dropdown
-        formControlName="selectedEmployee"
-        [options]="employees"
-        optionLabel="name"
-        placeholder="Selecciona un Empleado"
-        class="employee-dropdown"
-      ></p-dropdown>
+  <h1 class="title">{{ component }}</h1>
+  <ng-container *ngIf="loading; else formData">
+    <div class="loading-indicator">
+      <i class="pi pi-spin pi-spinner"></i>
+      <h2>Cargando datos...</h2>
     </div>
-    <div class="table-wrapper" formArrayName="items">
-      <p-table [value]="items.controls">
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Producto</th>
-            <th>Precio Unitario</th>
-            <th>Cantidad</th>
-            <th>Total</th>
-            <th>Borrar</th>
-          </tr>
-        </ng-template>
-        <!-- Una fila por cada FormGroup en el FormArray -->
-        <ng-template pTemplate="body" let-rowControl let-rowNumber="rowIndex">
-          <tr [formGroupName]="rowNumber">
-            <td>
-              <p-dropdown
-                formControlName="product"
-                [options]="products"
-                optionLabel="name"
-                placeholder="Selecciona un Producto"
-                (onChange)="updateProductSelection($event.value, rowNumber)"
-                appendTo="body"
-              ></p-dropdown>
-            </td>
-            <td>
-              <p-inputNumber
-                formControlName="unitPrice"
-                [disabled]="true"
-                mode="currency"
-                currency="USD"
-                locale="en-US"
-              ></p-inputNumber>
-            </td>
-            <td>
-              <p-inputNumber
-                formControlName="quantity"
-                mode="decimal"
-                [showButtons]="true"
-                [min]="0"
-                [max]="100"
-                [step]="1"
-                (onInput)="updateTotalSelection(rowNumber)"
-                styleClass="total-button"
-              ></p-inputNumber>
-            </td>
-            <td>
-              <p-inputNumber
-                formControlName="total"
-                [disabled]="true"
-                mode="currency"
-                currency="USD"
-                locale="en-US"
-              ></p-inputNumber>
-            </td>
-            <td>
-              <p-button
-                icon="pi pi-times"
-                [rounded]="true"
-                styleClass="delete-button"
-                [disabled]="!rowControl.get('canDelete')?.value"
-                (click)="removeProductRow(rowNumber)"
-              ></p-button>
-            </td>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="footer">
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="2" class="total">
-              Total:
-              <span>{{
-                getTotalAmount()
-                  | currency : "USD" : "symbol" : "1.2-2" : "en-US"
-              }}</span>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-      <div class="actions-row" #scrollTarget>
-        <div class="left">
-          <p-button
-            icon="pi pi-plus"
-            (click)="addProductRow()"
-            styleClass="add-button"
-          ></p-button>
-        </div>
-        <div class="center">
-          <p-button
-            label="Generar Orden"
-            icon="pi pi-save"
-            (click)="submitOrder()"
-            styleClass="save-button"
-            [disabled]="formGroup.invalid"
-          ></p-button>
+  </ng-container>
+  <ng-template #formData>
+    <div class="create-order-container" [formGroup]="formGroup">
+      <div class="form-header">
+        <p-dropdown
+          formControlName="selectedEmployee"
+          [options]="employees"
+          optionLabel="name"
+          placeholder="Selecciona un Empleado"
+          class="employee-dropdown"
+        ></p-dropdown>
+      </div>
+      <div class="table-wrapper" formArrayName="items">
+        <p-table [value]="items.controls">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Producto</th>
+              <th>Precio Unitario</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+              <th>Borrar</th>
+            </tr>
+          </ng-template>
+          <!-- Una fila por cada FormGroup en el FormArray -->
+          <ng-template pTemplate="body" let-rowControl let-rowNumber="rowIndex">
+            <tr [formGroupName]="rowNumber">
+              <td>
+                <p-dropdown
+                  formControlName="product"
+                  [options]="products"
+                  optionLabel="name"
+                  placeholder="Selecciona un Producto"
+                  (onChange)="updateProductSelection($event.value, rowNumber)"
+                  appendTo="body"
+                ></p-dropdown>
+              </td>
+              <td>
+                <p-inputNumber
+                  formControlName="unitPrice"
+                  [disabled]="true"
+                  mode="currency"
+                  currency="USD"
+                  locale="en-US"
+                ></p-inputNumber>
+              </td>
+              <td>
+                <p-inputNumber
+                  formControlName="quantity"
+                  mode="decimal"
+                  [showButtons]="true"
+                  [min]="0"
+                  [max]="100"
+                  [step]="1"
+                  (onInput)="updateTotalSelection(rowNumber)"
+                  styleClass="total-button"
+                ></p-inputNumber>
+              </td>
+              <td>
+                <p-inputNumber
+                  formControlName="total"
+                  [disabled]="true"
+                  mode="currency"
+                  currency="USD"
+                  locale="en-US"
+                ></p-inputNumber>
+              </td>
+              <td>
+                <p-button
+                  icon="pi pi-times"
+                  [rounded]="true"
+                  styleClass="delete-button"
+                  [disabled]="!rowControl.get('canDelete')?.value"
+                  (click)="removeProductRow(rowNumber)"
+                ></p-button>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="footer">
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td colspan="2" class="total">
+                Total:
+                <span>{{
+                  getTotalAmount()
+                    | currency : "USD" : "symbol" : "1.2-2" : "en-US"
+                }}</span>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <div class="actions-row" #scrollTarget>
+          <div class="left">
+            <p-button
+              icon="pi pi-plus"
+              (click)="addProductRow()"
+              styleClass="add-button"
+            ></p-button>
+          </div>
+          <div class="center">
+            <p-button
+              label="{{ textButton }}"
+              icon="pi pi-save"
+              (click)="submitOrder()"
+              styleClass="save-button"
+              [disabled]="formGroup.invalid"
+            ></p-button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-template>
 </div>

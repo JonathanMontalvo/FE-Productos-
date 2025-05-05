@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div class="container">
+  <h1 class="title">{{ component }}</h1>
+  <ng-container *ngIf="loading; else formData">
+    <div class="loading-indicator">
+      <i class="pi pi-spin pi-spinner"></i>
+      <h2>Cargando datos...</h2>
+    </div>
+  </ng-container>
+  <ng-template #formData>
+    <form
+      class="create-edit-product-container"
+      [formGroup]="formGroup"
+      (ngSubmit)="createEditCategory()"
+    >
+      <div class="create-edit-form">
+        <h2 class="form-title">Rellene los datos correspondientes</h2>
+        <p-dropdown
+          formControlName="selectedCategory"
+          [options]="categoriesArray"
+          optionLabel="name"
+          placeholder="Selecciona una Categoria"
+          class="category-field"
+        ></p-dropdown>
+        <div class="name-field">
+          <p-inputGroup>
+            <p-inputGroupAddon>
+              <i class="pi pi-tag"></i>
+            </p-inputGroupAddon>
+            <p-floatLabel class="name-field-float">
+              <input id="name" type="text" pInputText formControlName="name" />
+              <label for="name">Nombre Producto</label>
+            </p-floatLabel>
+          </p-inputGroup>
+        </div>
+        <div class="price-field">
+          <p-inputGroup>
+            <p-inputGroupAddon>$</p-inputGroupAddon>
+            <p-floatLabel class="price-field-float">
+              <p-inputNumber
+                id="price"
+                formControlName="price"
+                mode="decimal"
+                [maxFractionDigits]="2"
+              />
+              <label for="price">Precio</label>
+            </p-floatLabel>
+          </p-inputGroup>
+        </div>
+        <p-button
+          label="{{ buttonText }}"
+          icon="pi pi-save"
+          styleClass="save-button"
+          [disabled]="formGroup.invalid"
+          type="submit"
+        ></p-button>
+      </div>
+    </form>
+  </ng-template>
+</div>

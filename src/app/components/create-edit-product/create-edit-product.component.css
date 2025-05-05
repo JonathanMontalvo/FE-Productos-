@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  padding: 0 1rem;
+  margin: 0;
+  flex-direction: column;
+}
+
+.title {
+  padding: 1rem;
+  margin: 0;
+  background-color: #e0e2e5;
+  text-align: center;
+}
+
+.create-edit-product-container {
+  display: flex;
+  margin-top: 2rem;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.create-edit-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eff1f2;
+  border-radius: 15px;
+}
+
+.category-field,
+.name-field,
+.price-field {
+  width: 80%;
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+::ng-deep .category-field .p-dropdown,
+::ng-deep .price-field-float,
+::ng-deep .name-field-float {
+  width: 100% !important;
+}
+
+.form-title {
+  width: 80%;
+  text-align: left;
+}
+
+::ng-deep .save-button.p-button {
+  margin-bottom: 1rem;
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.loading-indicator i {
+  font-size: 6rem;
+}

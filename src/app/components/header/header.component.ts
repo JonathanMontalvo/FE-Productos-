@@ -21,7 +21,7 @@ export class HeaderComponent {
         this._router.navigate(['/agregarCategoria']);
         break;
       case 'producto':
-        this._router.navigate(['/agregarPoducto']);
+        this._router.navigate(['/agregarProducto']);
         break;
       case 'empleado':
         this._router.navigate(['/agregarEmpleado']);

@@ -27,7 +27,7 @@
 }
 
 .transparent-button {
-  background: #e0e2e5;
+  background: #54aba5;
   border: none;
   color: black;
   font-weight: 500;
@@ -40,7 +40,7 @@
 }
 
 .transparent-button:hover {
-  background-color: white;
+  background-color: #8dd2cd;
 }
 
 .menu-action {

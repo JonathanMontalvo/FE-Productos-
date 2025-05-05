@@ -35,4 +35,8 @@ export class OrderService {
       order
     );
   }
+
+  deleteOrder(id: number): Observable<void> {
+    return this.http.delete<void>(`${this._myAppUrl}${this._myApiUrl}${id}`);
+  }
 }

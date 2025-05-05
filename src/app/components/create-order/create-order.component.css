@@ -96,3 +96,16 @@
 .total {
   text-align: right;
 }
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.loading-indicator i {
+  font-size: 6rem;
+}
