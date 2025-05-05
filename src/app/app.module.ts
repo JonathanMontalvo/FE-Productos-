@@ -11,6 +11,7 @@ import { CreateOrderComponent } from './components/create-order/create-order.com
 import { CreateEditProductComponent } from './components/create-edit-product/create-edit-product.component';
 import { CreateEditEmployeeComponent } from './components/create-edit-employee/create-edit-employee.component';
 import { CreateEditCategoryComponent } from './components/create-edit-category/create-edit-category.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CreateEditCategoryComponent } from './components/create-edit-category/c
     CreateEditProductComponent,
     CreateEditEmployeeComponent,
     CreateEditCategoryComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

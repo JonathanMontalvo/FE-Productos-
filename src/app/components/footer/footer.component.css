@@ -1,0 +1,11 @@
+.color-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background-image: url("/img/Bosch-Supergraphic_RGB.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

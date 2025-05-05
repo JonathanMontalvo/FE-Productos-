@@ -36,6 +36,13 @@ export class OrderService {
     );
   }
 
+  updateOrder(id: number, order: PostOrder): Observable<void> {
+    return this.http.put<void>(
+      `${this._myAppUrl}${this._myApiUrl}${id}`,
+      order
+    );
+  }
+
   deleteOrder(id: number): Observable<void> {
     return this.http.delete<void>(`${this._myAppUrl}${this._myApiUrl}${id}`);
   }

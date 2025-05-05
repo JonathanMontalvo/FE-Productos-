@@ -204,11 +204,23 @@ export class CreateOrderComponent implements OnInit {
   }
 
   editOrder(id: number, postOrder: PostOrder) {
-    console.log(postOrder);
-    Swal.fire({
-      title: 'La orden se actualizo con exito',
-      icon: 'success',
-    });
+    //console.log(postOrder);
+    this._orderService.updateOrder(id, postOrder).subscribe(
+      () => {
+        Swal.fire({
+          title: 'La orden se actualizo con exito',
+          icon: 'success',
+        });
+        this._router.navigate(['/verOrdenes']);
+      },
+      (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error,
+        });
+      }
+    );
   }
 
   submitOrder(): void {

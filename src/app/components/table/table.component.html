@@ -15,7 +15,11 @@
         [paginator]="true"
         [rows]="5"
         showGridlines
-        [tableStyle]="{ 'min-width': '50rem' }"
+        [tableStyle]="{
+          'min-width': '50rem',
+          'table-layout': 'fixed',
+          width: '100%'
+        }"
         [rowsPerPageOptions]="[5, 10]"
       >
         <ng-template pTemplate="header" let-columns>
@@ -102,3 +106,4 @@
     </ng-template>
   </div>
 </div>
+<app-footer></app-footer>
