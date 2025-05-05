@@ -1,5 +1,6 @@
-.color-bar {
-  position: absolute;
+.color-bar-bottom {
+  position: fixed;
+  margin-top: 2rem;
   bottom: 0;
   left: 0;
   right: 0;

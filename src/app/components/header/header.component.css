@@ -11,7 +11,7 @@
 }
 
 .navbar {
-  margin: 2rem 1rem 1rem 0;
+  margin: 1rem 1rem 1rem 0;
   display: flex;
   flex-wrap: wrap; /* Para que si todo junto no cabe, baje */
   align-items: center;
